@@ -5,6 +5,7 @@ const main = document.querySelector('.main');
 const continueBtn = document.querySelector('.continue-btn');
 const quizSection = document.querySelector('.quiz-section');
 const quizBox = document.querySelector('.quiz-box');
+const resultBox = document.querySelector('.result-box');
 
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
@@ -40,7 +41,8 @@ nextBtn.onclick = () => {
         questionCounter(questionNumb);
     }
     else {
-        console.log('Question Completed');
+        //console.log('Question Completed');
+        showResultBox();
     }
 }
 
@@ -73,7 +75,18 @@ function optionSelected(answer)
         answer.classList.add('correct');
     }
     else {
-        answer.classList.add('incorrect');
+        answer.classList.add('correct');
+    }
+    if (questionCount < questions.length - 1) {
+        questionCount++;
+        showQuestions(questionCount);
+
+        questionNumb++;
+        questionCounter(questionNumb);
+    }
+    else {
+        console.log('Question Completed');
+        showResultBox()
     }
 }
 
@@ -81,4 +94,11 @@ function questionCounter(index)
 {
     const questionTotal = document.querySelector('.question-total');
     questionTotal.textContent = `${index} of ${questions.length} Questions`;
+}
+
+function showResultBox()
+{
+    quizBox.classList.remove('active');
+    resultBox.classList.add('active');
+
 }
