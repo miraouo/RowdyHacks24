@@ -6,7 +6,12 @@ const continueBtn = document.querySelector('.continue-btn');
 const quizSection = document.querySelector('.quiz-section');
 const quizBox = document.querySelector('.quiz-box');
 const resultBox = document.querySelector('.result-box');
-
+const characterName = document.querySelector('.character-name');
+const characterImg = document.querySelector('.character-img');
+let marty = 0
+let doc = 0
+let biff = 0
+let einstein = 0
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
     main.classList.add('active');
@@ -41,7 +46,6 @@ nextBtn.onclick = () => {
         questionCounter(questionNumb);
     }
     else {
-        //console.log('Question Completed');
         showResultBox();
     }
 }
@@ -69,14 +73,17 @@ function showQuestions(index){
 function optionSelected(answer)
 {
     let userAnswer = answer.textContent;
-    let correctAnswer = questions[questionCount].answer;
-    if (userAnswer == correctAnswer)
-    {
-        answer.classList.add('correct');
+    if (userAnswer[0] === 'A'){
+        marty++;
+    } else if (userAnswer[0] === 'B'){
+        doc++;
+    } else if (userAnswer[0] === 'C'){
+        biff++;
     }
     else {
-        answer.classList.add('correct');
+        einstein++;
     }
+    console.log(marty, doc, biff, einstein);
     if (questionCount < questions.length - 1) {
         questionCount++;
         showQuestions(questionCount);
@@ -100,5 +107,17 @@ function showResultBox()
 {
     quizBox.classList.remove('active');
     resultBox.classList.add('active');
-
+    if (marty > doc && marty > biff && marty > einstein) {
+        characterName.textContent = "Marty McFly!";
+        characterImg.src = "marty.jpg";
+    } else if (doc > marty && doc > biff && doc > einstein) {
+        characterName.textContent = "Doc Brown!";
+        characterImg.src = "doc.jpg";
+    } else if (biff > marty && biff > doc && biff > einstein) {
+        characterName.textContent = "Biff Tannen!";
+        characterImg.src = "biff.jpg";
+    } else {
+        characterName.textContent = "Einstein!";
+        characterImg.src = "einstein.jpg";
+    }
 }
