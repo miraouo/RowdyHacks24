@@ -204,7 +204,7 @@ body
 .quiz-section
 {
     position: relative;
-    left: 0;
+    left: -50%;
     width: 100%;
     background: #09001d;
     display: flex;
@@ -243,7 +243,8 @@ body
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-bottom: 2px solid #c40094
+    border-bottom: 2px solid #c40094;
+    margin-bottom: 30px;
 }
 
 .quix-header span {
@@ -285,6 +286,9 @@ body
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-top: 2px solid #c40094;
+    padding-top: 20px;
+    margin-top: 25px;
 }
 
 .quiz-footer .question-total
