@@ -74,11 +74,11 @@ function optionSelected(answer)
 {
     let userAnswer = answer.textContent;
     if (userAnswer[0] === 'A'){
-        marty++;
+        biff++;
     } else if (userAnswer[0] === 'B'){
         doc++;
     } else if (userAnswer[0] === 'C'){
-        biff++;
+        marty++;
     }
     else {
         einstein++;
